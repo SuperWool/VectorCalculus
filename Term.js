@@ -11,6 +11,11 @@ function Term(coeff, terms, power) {
         coeff *= power[wrt]--;
       }
     },
+    multiply: function(term) {
+      coeff *= term.coeff;
+      // check the existence of each term in the local term with the foreign one
+      
+    },
     print: function() {
       let answer = coeff.toString();
       if (coeff !== 0) {
@@ -23,17 +28,8 @@ function Term(coeff, terms, power) {
           }
         }
       }
-      $('#answer').html(answer);
+      return answer;
     }
   };
 }
 
-$(document).ready(function() {
-  var x = Term(2, ['x', 'y'], [5, 1]);
-  $('#answer').click(function() {
-    $(this).fadeOut(250).fadeIn(250);
-    x.diff('x');
-    x.print();
-  });
-  x.print();
-})
